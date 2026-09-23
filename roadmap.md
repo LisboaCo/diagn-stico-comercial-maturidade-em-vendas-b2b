@@ -1,26 +1,26 @@
 # Roadmap — Diagnóstico de Maturidade Comercial (Vendas B2B)
 
 ## Bloqueado pelo usuário
-- [ ] **Atualizar secret BANCO_CLIENT_HEALTH** — usuário deve atualizar em Project Settings → Secrets (ferramenta de edição não disponível neste ambiente).
-- [ ] **Atualizar secret POSTGREST_DASHBOARD_TVSIM** — usuário deve atualizar em Project Settings → Secrets.
+- [ ] **Atualizar secret BANCO_CLIENT_HEALTH** — valor atual é placeholder ("PLACEHOLDER_VALUE_TO_BE_REPLACED"); usuário deve atualizar em Project Settings → Secrets (não há ferramenta de edição neste ambiente).
+- [ ] **Atualizar secret POSTGREST_DASHBOARD_TVSIM** — idem, valor placeholder.
 
-## Banco de dados (não misturar com TVSIM)
-- [ ] Confirmar acesso via `psql` (BANCO_CLIENT_HEALTH) e PostgREST (POSTGREST_DASHBOARD_TVSIM).
+## Código do app — CONCLUÍDO
+- [x] `src/lib/diagnostico.ts` reescrito (pilares fundacao/gestao/escala, 15 perguntas, níveis V0–V3, calcularNivel).
+- [x] Pilares renomeados em todo o código (index, painel, store, functions).
+- [x] `src/lib/respostas.functions.ts` → `/rpc/salvar_resposta_comercial` e `/respostas_comercial`, novos campos.
+- [x] `src/lib/respostas-store.ts` (interface via re-export, novos campos).
+- [x] Textos de interface → vendas/comercial; sem menção a IA.
+- [x] Pirâmide: fonte do degrau topo reduzida ("Máquina de Vendas" sem quebrar).
+- [x] Painel: micro-label, H1 "Maturidade Comercial", cards p6 (CRM) e p7 (meta), subtítulo pirâmide, YAxis mais largo.
+- [x] Meta tags de todas as rotas → "Diagnóstico Comercial · Maturidade em Vendas B2B".
+- [x] Typecheck limpo; build OK.
+
+## Banco de dados (bloqueado pelas secrets)
+- [ ] Introspectar `dashboard_tvsim.respostas` + `salvar_resposta` (DDL/grants/roles) para espelhar exatamente.
 - [ ] Criar tabela `dashboard_tvsim.respostas_comercial` (pontos fundacao/gestao/escala; nivel check V0–V3; respostas jsonb).
-- [ ] Criar RPC `salvar_resposta_comercial` equivalente, grants/exposição PostgREST idênticos ao TVSIM.
+- [ ] Criar RPC `salvar_resposta_comercial` equivalente, grants/exposição PostgREST idênticos.
 - [ ] Reload schema PostgREST (`notify pgrst, 'reload schema'`).
-
-## Código do app
-- [ ] Substituir conteúdo de `src/lib/diagnostico.ts`.
-- [ ] Renomear pilares em todo o código (tipos, funções, colunas, componentes, store).
-- [ ] Atualizar `src/lib/respostas.functions.ts` → `/rpc/salvar_resposta_comercial` e `/respostas_comercial`.
-- [ ] Atualizar `src/lib/respostas-store.ts` (novos campos).
-- [ ] Textos de interface → vendas/comercial; sem menção a IA.
-- [ ] Pirâmide: ajustar fonte do degrau topo ("Máquina de Vendas").
-- [ ] Painel `/painel`: micro-label, H1, cards (p6 CRM, p7 meta), subtítulo pirâmide, largura YAxis.
-- [ ] Meta tags de todas as rotas → "Diagnóstico Comercial · Maturidade em Vendas B2B".
 
 ## Validação
 - [ ] Insert de teste pela RPC; confirmar na listagem; apagar registro de teste.
-- [ ] Build OK; checar /tmp/observability/build-errors.log.
 - [ ] Relatar: secrets disponíveis, SQL executado, teste de gravação/leitura.
