@@ -201,7 +201,7 @@ function Dashboard() {
             Em qual nível está cada empresa
           </h2>
           <p className="mt-1 text-sm text-ink-muted">
-            Percentual da sala em cada fase da construção.
+            Percentual da sala em cada nível de maturidade comercial.
           </p>
           <PiramideNiveis faixas={porNivel} />
         </div>
@@ -213,15 +213,15 @@ function Dashboard() {
         </div>
 
         <div className="surface-card rounded-2xl p-6">
-          <h2 className="text-2xl font-bold tracking-tight text-ink">Como a sala usa IA hoje</h2>
-          <GraficoBarras dados={distribuicaoPergunta("p12")} altura={240} />
+          <h2 className="text-2xl font-bold tracking-tight text-ink">Onde a sala registra as vendas</h2>
+          <GraficoBarras dados={distribuicaoPergunta("p6")} altura={240} />
         </div>
 
         <div className="surface-card rounded-2xl p-6 xl:col-span-2">
           <h2 className="text-2xl font-bold tracking-tight text-ink">
-            Quem já tentou e não vingou
+            Quem tem meta por vendedor
           </h2>
-          <GraficoBarras dados={distribuicaoPergunta("p15")} altura={240} />
+          <GraficoBarras dados={distribuicaoPergunta("p7")} altura={240} />
         </div>
       </section>
 
