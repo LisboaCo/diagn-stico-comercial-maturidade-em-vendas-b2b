@@ -31,16 +31,16 @@ import { salvarResposta } from "@/lib/respostas-store";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Diagnóstico de Maturidade em IA e Tecnologia" },
+      { title: "Diagnóstico Comercial · Maturidade em Vendas B2B" },
       {
         name: "description",
         content:
-          "Descubra em 3 minutos o nível de maturidade da sua empresa em tecnologia e inteligência artificial.",
+          "Descubra em 3 minutos o nível de maturidade comercial da sua empresa em vendas B2B.",
       },
-      { property: "og:title", content: "Sua empresa está pronta para a IA?" },
+      { property: "og:title", content: "Sua empresa tem uma máquina de vendas?" },
       {
         property: "og:description",
-        content: "Diagnóstico rápido de maturidade em IA e tecnologia para pequenas e médias empresas.",
+        content: "Diagnóstico rápido de maturidade comercial em vendas B2B para pequenas e médias empresas.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -62,7 +62,7 @@ function corPorFaixa(valor: number) {
 function Marca() {
   return (
     <header className="flex items-center justify-center gap-2 py-5">
-      <Chip cor="var(--v4-red)">Diagnóstico IA</Chip>
+      <Chip cor="var(--v4-red)">Diagnóstico Comercial</Chip>
     </header>
   );
 }
@@ -97,9 +97,9 @@ function DiagnosticoPage() {
 
   const pontos = useMemo(
     () => ({
-      alicerce: pontuacaoPilar(respostas, "alicerce"),
-      estrutura: pontuacaoPilar(respostas, "estrutura"),
-      acabamento: pontuacaoPilar(respostas, "acabamento"),
+      fundacao: pontuacaoPilar(respostas, "fundacao"),
+      gestao: pontuacaoPilar(respostas, "gestao"),
+      escala: pontuacaoPilar(respostas, "escala"),
     }),
     [respostas],
   );
@@ -147,10 +147,10 @@ function DiagnosticoPage() {
             <div className="relative space-y-3">
               <p className="micro-label">Diagnóstico em 15 perguntas</p>
               <h1 className="text-3xl leading-tight font-bold text-ink">
-                Sua empresa está pronta para a <span className="text-primary">IA</span>?
+                Sua empresa tem uma <span className="text-primary">máquina de vendas</span>?
               </h1>
               <p className="text-xs text-ink-muted">
-                Descubra o nível de maturidade do seu negócio em 3 minutos
+                Descubra o nível de maturidade comercial do seu negócio em 3 minutos
               </p>
             </div>
             <Button
@@ -254,12 +254,12 @@ function DiagnosticoPage() {
       <Cadastro
         pontos={pontos}
         onConcluir={async (dados) => {
-          const nivel = calcularNivel(pontos.alicerce, pontos.estrutura, pontos.acabamento);
+          const nivel = calcularNivel(pontos.fundacao, pontos.gestao, pontos.escala);
           await salvarResposta({
             respostas,
-            pontos_alicerce: pontos.alicerce,
-            pontos_estrutura: pontos.estrutura,
-            pontos_acabamento: pontos.acabamento,
+            pontos_fundacao: pontos.fundacao,
+            pontos_gestao: pontos.gestao,
+            pontos_escala: pontos.escala,
             nivel,
             ...dados,
           });
@@ -270,13 +270,13 @@ function DiagnosticoPage() {
     );
   }
 
-  return (
-    <Resultado
-      nivel={nivelSalvo ?? calcularNivel(pontos.alicerce, pontos.estrutura, pontos.acabamento)}
-      pontos={pontos}
-      passos={proximosPassos(respostas)}
-    />
-  );
+    return (
+      <Resultado
+        nivel={nivelSalvo ?? calcularNivel(pontos.fundacao, pontos.gestao, pontos.escala)}
+        pontos={pontos}
+        passos={proximosPassos(respostas)}
+      />
+    );
 }
 
 interface DadosCadastro {
@@ -292,7 +292,7 @@ function Cadastro({
   pontos,
   onConcluir,
 }: {
-  pontos: { alicerce: number; estrutura: number; acabamento: number };
+  pontos: { fundacao: number; gestao: number; escala: number };
   onConcluir: (dados: DadosCadastro) => Promise<void>;
 }) {
   void pontos;
@@ -474,7 +474,7 @@ function Resultado({
   passos,
 }: {
   nivel: NivelCodigo;
-  pontos: { alicerce: number; estrutura: number; acabamento: number };
+  pontos: { fundacao: number; gestao: number; escala: number };
   passos: string[];
 }) {
   const info = NIVEIS[nivel];
@@ -484,10 +484,10 @@ function Resultado({
   ]!;
 
   async function compartilhar() {
-    const texto = `Meu diagnóstico de maturidade em IA: nível ${info.codigo} ${info.nome}. ${info.frase}`;
+    const texto = `Meu diagnóstico de maturidade comercial: nível ${info.codigo} ${info.nome}. ${info.frase}`;
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Diagnóstico IA", text: texto });
+        await navigator.share({ title: "Diagnóstico Comercial", text: texto });
         return;
       } catch {
         /* usuário cancelou */
@@ -521,9 +521,9 @@ function Resultado({
 
       <section className="surface-card mt-4 space-y-4 rounded-2xl p-5">
         <h2 className="text-[15px] font-bold tracking-tight text-ink">Pontuação por pilar</h2>
-        <BarraPilar nome="Alicerce" valor={pontos.alicerce} />
-        <BarraPilar nome="Estrutura" valor={pontos.estrutura} />
-        <BarraPilar nome="Acabamento" valor={pontos.acabamento} />
+        <BarraPilar nome="Fundação" valor={pontos.fundacao} />
+        <BarraPilar nome="Gestão" valor={pontos.gestao} />
+        <BarraPilar nome="Escala" valor={pontos.escala} />
       </section>
 
       <section className="surface-card mt-4 rounded-2xl p-5">
