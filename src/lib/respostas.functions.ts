@@ -6,9 +6,9 @@ export interface RespostaRegistro {
   id: string;
   criado_em: string;
   respostas: Respostas;
-  pontos_alicerce: number;
-  pontos_estrutura: number;
-  pontos_acabamento: number;
+  pontos_fundacao: number;
+  pontos_gestao: number;
+  pontos_escala: number;
   nivel: NivelCodigo;
   nome: string;
   whatsapp: string;
@@ -20,9 +20,9 @@ export interface RespostaRegistro {
 
 interface PayloadSalvar {
   respostas: Respostas;
-  pontos_alicerce: number;
-  pontos_estrutura: number;
-  pontos_acabamento: number;
+  pontos_fundacao: number;
+  pontos_gestao: number;
+  pontos_escala: number;
   nivel: NivelCodigo;
   nome: string;
   whatsapp: string;
@@ -48,14 +48,14 @@ export const salvarResposta = createServerFn({ method: "POST" })
   .inputValidator((data: PayloadSalvar) => data)
   .handler(async ({ data }) => {
     const baseUrl = getBaseUrl();
-    const response = await fetch(`${baseUrl}/rpc/salvar_resposta`, {
+    const response = await fetch(`${baseUrl}/rpc/salvar_resposta_comercial`, {
       method: "POST",
       headers,
       body: JSON.stringify({
         p_respostas: data.respostas,
-        p_pontos_alicerce: data.pontos_alicerce,
-        p_pontos_estrutura: data.pontos_estrutura,
-        p_pontos_acabamento: data.pontos_acabamento,
+        p_pontos_fundacao: data.pontos_fundacao,
+        p_pontos_gestao: data.pontos_gestao,
+        p_pontos_escala: data.pontos_escala,
         p_nivel: data.nivel,
         p_nome: data.nome,
         p_whatsapp: data.whatsapp,
@@ -76,7 +76,7 @@ export const salvarResposta = createServerFn({ method: "POST" })
 
 export const listarRespostas = createServerFn({ method: "GET" }).handler(async () => {
   const baseUrl = getBaseUrl();
-  const response = await fetch(`${baseUrl}/respostas?select=*&order=criado_em.desc`, {
+  const response = await fetch(`${baseUrl}/respostas_comercial?select=*&order=criado_em.desc`, {
     method: "GET",
     headers,
   });
