@@ -276,12 +276,12 @@ function GraficoBarras({
           <YAxis
             type="category"
             dataKey="nome"
-            width={destaque ? 190 : 170}
+            width={destaque ? 240 : 220}
             tickLine={false}
             axisLine={false}
             tick={{
               fill: "var(--ink)",
-              fontSize: destaque ? 18 : 14,
+              fontSize: destaque ? 18 : 13,
               fontWeight: 600,
             }}
           />
