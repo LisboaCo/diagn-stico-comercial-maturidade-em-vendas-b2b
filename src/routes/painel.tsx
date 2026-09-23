@@ -25,15 +25,15 @@ export const Route = createFileRoute("/painel")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Painel do evento · Diagnóstico IA" },
+      { title: "Diagnóstico Comercial · Maturidade em Vendas B2B" },
       {
         name: "description",
-        content: "Painel agregado, ao vivo, das respostas do diagnóstico de maturidade em IA.",
+        content: "Painel agregado, ao vivo, das respostas do diagnóstico de maturidade comercial.",
       },
-      { property: "og:title", content: "Painel do evento · Diagnóstico IA" },
+      { property: "og:title", content: "Diagnóstico Comercial · Painel ao vivo" },
       {
         property: "og:description",
-        content: "Resultados agregados do diagnóstico de maturidade em IA em tempo real.",
+        content: "Resultados agregados do diagnóstico de maturidade comercial em tempo real.",
       },
       { name: "robots", content: "noindex" },
     ],
@@ -168,13 +168,13 @@ function Dashboard() {
         <div className="relative flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="micro-label" style={{ color: "var(--color-v4-red)" }}>
-              Diagnóstico IA · Painel ao vivo
+              Diagnóstico Comercial · Painel ao vivo
             </p>
             <h1
               className="mt-2 text-5xl font-bold text-ink"
               style={{ letterSpacing: "-0.02em" }}
             >
-              Maturidade em IA e Tecnologia
+              Maturidade Comercial
             </h1>
           </div>
           <div className="text-right">

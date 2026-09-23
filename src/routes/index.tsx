@@ -549,11 +549,11 @@ function Resultado({
         <p className="flex items-center justify-center gap-2 text-center text-xs text-ink-muted">
           <Check className="size-3.5" style={{ color: "var(--flag-safe)" }} /> Resposta registrada
         </p>
-        <Link
+          <Link
           to="/painel"
           className="block text-center text-xs text-ink-muted hover:text-primary"
         >
-          Painel do evento
+          Painel ao vivo
         </Link>
       </div>
     </main>
