@@ -200,3 +200,31 @@ export function proximosPassos(respostas: Respostas): string[] {
     .slice(0, 3)
     .map((item) => item.p.acao);
 }
+
+/**
+ * Dimensões do radar do painel. Reagrupam as 15 perguntas em 6 frentes
+ * comerciais, na escala de 0 a 5 (média das respostas da dimensão).
+ */
+export interface Dimensao {
+  id: string;
+  nome: string;
+  perguntas: string[];
+}
+
+export const DIMENSOES: Dimensao[] = [
+  { id: "demanda", nome: "Geração de demanda", perguntas: ["p12", "p13"] },
+  { id: "processo", nome: "Processo e playbook", perguntas: ["p3", "p4", "p14"] },
+  { id: "pessoas", nome: "Pessoas e papéis", perguntas: ["p1", "p2", "p5"] },
+  { id: "gestao", nome: "Gestão e rituais", perguntas: ["p7", "p10", "p11"] },
+  { id: "dados", nome: "Dados e CRM", perguntas: ["p6", "p8", "p9"] },
+  { id: "posvenda", nome: "Pós-venda e retenção", perguntas: ["p15"] },
+];
+
+/** Meta de referência de cada dimensão (escala 0 a 5). */
+export const META_DIMENSAO = 4;
+
+/** Nota de 0 a 5 de uma dimensão para um conjunto de respostas (0/1/2 por pergunta). */
+export function notaDimensao(respostas: Respostas, dimensao: Dimensao): number {
+  const soma = dimensao.perguntas.reduce((total, id) => total + (respostas[id] ?? 0), 0);
+  return (soma / (dimensao.perguntas.length * 2)) * 5;
+}

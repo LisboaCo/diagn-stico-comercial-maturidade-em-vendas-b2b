@@ -14,6 +14,7 @@ import {
 import cuboAsset from "@/assets/v4-cubo.png.asset.json";
 import { HeroBackground } from "@/components/HeroBackground";
 import { PiramideNiveis } from "@/components/PiramideNiveis";
+import { RadarMaturidade } from "@/components/RadarMaturidade";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FAIXAS_FATURAMENTO, NIVEIS, PERGUNTAS } from "@/lib/diagnostico";
@@ -193,6 +194,18 @@ function Dashboard() {
         {porNivel.map((item) => (
           <Kpi key={item.nome} rotulo={item.nome} valor={`${item.percentual}%`} />
         ))}
+      </section>
+
+      <section className="surface-card mt-6 rounded-2xl p-6">
+        <p className="micro-label" style={{ color: "var(--color-v4-red)" }}>
+          Maturidade · Onde a sala está e o que falta
+        </p>
+        <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink">
+          Maturidade comercial da sala por frente
+        </h2>
+        <div className="mt-6">
+          <RadarMaturidade respostas={dados.map((d) => d.respostas)} />
+        </div>
       </section>
 
       <section className="mt-6 grid gap-6 xl:grid-cols-3">
