@@ -1,4 +1,4 @@
-export type PilarId = "alicerce" | "estrutura" | "acabamento";
+export type PilarId = "fundacao" | "gestao" | "escala";
 
 export interface Pergunta {
   id: string;
@@ -10,174 +10,161 @@ export interface Pergunta {
 
 export const PILARES: { id: PilarId; numero: number; nome: string; legenda: string }[] = [
   {
-    id: "alicerce",
+    id: "fundacao",
     numero: 1,
-    nome: "Alicerce",
-    legenda: "A base do negócio. Sem ela, nada se sustenta.",
+    nome: "Fundação",
+    legenda: "Pessoas, perfil de cliente e processo. Sem isso, venda é improviso.",
   },
   {
-    id: "estrutura",
+    id: "gestao",
     numero: 2,
-    nome: "Estrutura",
-    legenda: "Os números que sustentam as decisões.",
+    nome: "Gestão",
+    legenda: "Metas, CRM e números que mostram onde o funil trava.",
   },
   {
-    id: "acabamento",
+    id: "escala",
     numero: 3,
-    nome: "Acabamento",
-    legenda: "Tecnologia e IA operando de verdade.",
+    nome: "Escala",
+    legenda: "Previsibilidade, geração de demanda e máquina rodando.",
   },
 ];
 
 export const PERGUNTAS: Pergunta[] = [
+  // FUNDAÇÃO
   {
     id: "p1",
-    pilar: "alicerce",
-    texto: "Sua empresa tem site próprio, atualizado, que representa bem o negócio hoje?",
-    opcoes: ["Sim", "Tem, mas está desatualizado", "Não, só redes sociais"],
-    acao: "Colocar de pé um site próprio que represente o negócio hoje",
+    pilar: "fundacao",
+    texto: "Quem vende na sua empresa hoje?",
+    opcoes: [
+      "Time comercial dedicado (2 ou mais pessoas)",
+      "1 vendedor, ou o dono com apoio",
+      "Só o dono ou sócio vende",
+    ],
+    acao: "Tirar a venda das costas do dono e montar um time comercial dedicado",
   },
   {
     id: "p2",
-    pilar: "alicerce",
+    pilar: "fundacao",
     texto:
-      "O caminho do seu cliente, do primeiro contato até a compra e o pós-venda, está desenhado em algum lugar?",
-    opcoes: [
-      "Sim, documentado e a equipe segue",
-      "Existe, mas só na cabeça",
-      "Cada venda acontece de um jeito",
-    ],
-    acao: "Desenhar a jornada do cliente, do primeiro contato ao pós-venda",
+      "As funções do comercial estão separadas (quem prospecta, quem qualifica, quem fecha, quem cuida do pós-venda)?",
+    opcoes: ["Sim, cada etapa tem dono", "Em parte, alguns acumulam funções", "Todo mundo faz tudo"],
+    acao: "Separar papéis no comercial: prospecção, qualificação, fechamento e pós-venda",
   },
   {
     id: "p3",
-    pilar: "alicerce",
-    texto: "Os processos principais (como atende, vende, entrega, cobra) estão documentados?",
-    opcoes: ["Sim", "Alguns", "Nada documentado"],
-    acao: "Documentar os processos principais da operação",
+    pilar: "fundacao",
+    texto: "O perfil de cliente ideal (segmento, porte, quem decide a compra) está definido?",
+    opcoes: ["Sim, escrito e usado para qualificar", "Temos uma ideia, mas não está escrito", "Vendemos para quem aparecer"],
+    acao: "Definir o perfil de cliente ideal (ICP) e usá-lo para qualificar oportunidades",
   },
   {
     id: "p4",
-    pilar: "alicerce",
-    texto:
-      "Se a pessoa mais importante da operação sair amanhã, a empresa continua rodando normalmente?",
-    opcoes: ["Sim, está tudo registrado", "Roda, mas com dificuldade", "Trava"],
-    acao: "Registrar o conhecimento crítico para a operação não depender de uma pessoa",
+    pilar: "fundacao",
+    texto: "As etapas do seu funil de vendas, do primeiro contato ao fechamento, estão desenhadas?",
+    opcoes: ["Sim, com critério claro de passagem entre etapas", "Existe na prática, mas não está escrito", "Cada vendedor vende do seu jeito"],
+    acao: "Desenhar o processo de vendas com etapas e critérios de avanço",
   },
   {
     id: "p5",
-    pilar: "alicerce",
-    texto:
-      "Os materiais da marca (identidade visual, tom de voz, apresentações) estão organizados em um lugar só?",
-    opcoes: ["Sim", "Existem, mas espalhados", "Não existem formalizados"],
-    acao: "Centralizar e formalizar os materiais da marca em um único lugar",
+    pilar: "fundacao",
+    texto: "Se o seu melhor vendedor sair amanhã, as vendas continuam?",
+    opcoes: ["Sim, processo e carteira estão registrados", "Continuam, mas caem bastante", "Param, tudo depende dele"],
+    acao: "Registrar carteira e processo para as vendas não dependerem de uma pessoa",
   },
+  // GESTÃO
   {
     id: "p6",
-    pilar: "estrutura",
-    texto: "Você sabe quanto custa trazer um cliente novo (CAC)?",
-    opcoes: ["Sei o número", "Sei calcular, mas não acompanho", "Nunca calculei"],
-    acao: "Calcular e acompanhar o custo de aquisição de cliente (CAC)",
+    pilar: "gestao",
+    texto: "Onde vocês registram as oportunidades de venda?",
+    opcoes: ["CRM usado por todo o time, todo dia", "CRM mal alimentado ou planilha", "WhatsApp, caderno ou na cabeça"],
+    acao: "Implantar um CRM e criar a disciplina de registrar toda oportunidade",
   },
   {
     id: "p7",
-    pilar: "estrutura",
-    texto: "Você sabe quanto um cliente vale ao longo do tempo de relacionamento (LTV)?",
-    opcoes: ["Sei o número", "Sei calcular, mas não acompanho", "Nunca calculei"],
-    acao: "Calcular e acompanhar o valor do cliente no tempo (LTV)",
+    pilar: "gestao",
+    texto: "Existe meta de vendas definida por mês e por vendedor?",
+    opcoes: ["Sim, mensal e individual", "Só uma meta geral da empresa", "Não temos meta definida"],
+    acao: "Definir meta mensal por vendedor, desdobrada da meta da empresa",
   },
   {
     id: "p8",
-    pilar: "estrutura",
-    texto: "Você conhece a margem de cada produto ou serviço que vende?",
-    opcoes: ["Sim, por item", "Só a margem geral", "Não sei ao certo"],
-    acao: "Abrir a margem de cada produto ou serviço, item por item",
+    pilar: "gestao",
+    texto: "Você sabe a taxa de conversão de cada etapa do funil (contato → reunião → proposta → fechamento)?",
+    opcoes: ["Sei, por etapa e por vendedor", "Só a conversão geral", "Não sei"],
+    acao: "Medir a conversão de cada etapa do funil para achar o gargalo",
   },
   {
     id: "p9",
-    pilar: "estrutura",
-    texto: "De onde saem os números da sua empresa?",
-    opcoes: [
-      "Relatórios automáticos de sistema",
-      "Planilhas montadas na mão",
-      "Não acompanho números",
-    ],
-    acao: "Tirar os números da planilha manual e gerar relatórios automáticos",
+    pilar: "gestao",
+    texto: "Você conhece o ticket médio e o tempo médio para fechar uma venda?",
+    opcoes: ["Sei os dois e acompanho", "Tenho noção de um deles", "Não sei"],
+    acao: "Acompanhar ticket médio e ciclo de vendas todo mês",
   },
   {
     id: "p10",
-    pilar: "estrutura",
-    texto: "Quando você toma uma decisão importante, ela é baseada em quê?",
-    opcoes: ["Indicadores", "Mistura de número e intuição", "Feeling e experiência"],
-    acao: "Definir indicadores que orientem as decisões importantes",
+    pilar: "gestao",
+    texto: "Existe rotina de gestão comercial (reunião semanal de pipeline, conversas individuais com vendedores)?",
+    opcoes: ["Sim, com cadência fixa", "Acontece de vez em quando", "Não existe"],
+    acao: "Instituir rituais de gestão: reunião semanal de pipeline e 1:1 com o time",
   },
+  // ESCALA
   {
     id: "p11",
-    pilar: "acabamento",
-    texto:
-      "Existe alguma automação rodando na empresa (follow-up automático, integração entre sistemas, robôs de tarefa)?",
-    opcoes: ["Sim, mais de uma", "Uma ou outra", "Nenhuma"],
-    acao: "Colocar a primeira automação para rodar na operação",
+    pilar: "escala",
+    texto: "Você consegue prever quanto vai vender no próximo mês?",
+    opcoes: ["Sim, pelo pipeline, com pouca margem de erro", "Tenho uma estimativa, mas erra bastante", "Não, cada mês é uma surpresa"],
+    acao: "Construir um forecast de vendas a partir do pipeline",
   },
   {
     id: "p12",
-    pilar: "acabamento",
-    texto: "Como a sua equipe usa IA hoje?",
-    opcoes: [
-      "Com padrão e diretrizes definidas pela empresa",
-      "Cada um usa por conta própria",
-      "Não usa",
-    ],
-    acao: "Definir um padrão de uso de IA para toda a equipe",
+    pilar: "escala",
+    texto: "De onde vêm as suas oportunidades de venda?",
+    opcoes: ["Canais ativos e previsíveis (marketing e prospecção)", "Mais indicação, com alguma ação ativa", "Só indicação e demanda espontânea"],
+    acao: "Criar canais ativos de geração de demanda além da indicação",
   },
   {
     id: "p13",
-    pilar: "acabamento",
-    texto: "Seus sistemas conversam entre si (CRM, WhatsApp, planilhas, financeiro)?",
-    opcoes: ["Integrados", "Parcialmente", "Cada um é uma ilha"],
-    acao: "Integrar os sistemas para os dados circularem sem retrabalho",
+    pilar: "escala",
+    texto: "Marketing e vendas têm acordo sobre o que é um lead qualificado e em quanto tempo ele é atendido?",
+    opcoes: ["Sim, formalizado e medido", "Combinado informal", "Não há alinhamento"],
+    acao: "Formalizar o acordo entre marketing e vendas (lead qualificado e tempo de resposta)",
   },
   {
     id: "p14",
-    pilar: "acabamento",
-    texto:
-      "Existe alguma regra sobre o que pode ou não ser colocado em ferramentas de IA (dados de cliente, informações internas)?",
-    opcoes: ["Sim, formalizada", "Combinado informal", "Nunca pensamos nisso"],
-    acao: "Formalizar uma política de dados e uso seguro de IA",
+    pilar: "escala",
+    texto: "Um vendedor novo tem playbook e treinamento para começar a vender?",
+    opcoes: ["Sim, playbook e integração com prazo definido", "Aprende acompanhando os outros", "Aprende na raça"],
+    acao: "Escrever o playbook de vendas e um roteiro de integração de vendedores",
   },
   {
     id: "p15",
-    pilar: "acabamento",
-    texto: "Vocês já tentaram automatizar ou implantar alguma ferramenta que não vingou?",
-    opcoes: [
-      "Implantamos e funciona até hoje",
-      "Tentamos e morreu no caminho",
-      "Nunca tentamos",
-    ],
-    acao: "Retomar uma implantação com método, para não morrer no caminho",
+    pilar: "escala",
+    texto: "Existe processo de follow-up, pós-venda e recompra rodando?",
+    opcoes: ["Sim, automatizado e com responsável", "Manual, quando dá tempo", "Não existe"],
+    acao: "Estruturar follow-up e pós-venda com automação para gerar recompra",
   },
 ];
 
 export const NIVEIS = {
   V0: {
     codigo: "V0",
-    nome: "Terreno",
-    frase: "Sua empresa ainda está no terreno: antes da IA, é preciso construir a base.",
+    nome: "Improviso",
+    frase: "Sua empresa ainda vende no improviso: antes de escalar, é preciso construir a fundação comercial.",
   },
   V1: {
     codigo: "V1",
-    nome: "Alicerce",
-    frase: "Você tem a base, mas ainda decide no escuro: o próximo passo é dominar seus números.",
+    nome: "Fundação",
+    frase: "Você tem a base do comercial, mas ainda gerencia no escuro: o próximo passo é dominar metas e números.",
   },
   V2: {
     codigo: "V2",
-    nome: "Estrutura",
-    frase: "Base sólida e números na mão: sua empresa está pronta para tecnologia e IA de verdade.",
+    nome: "Gestão",
+    frase: "Time estruturado e números na mão: sua empresa está pronta para ganhar previsibilidade e escala.",
   },
   V3: {
     codigo: "V3",
-    nome: "Acabamento",
-    frase: "Sua empresa está entre as poucas prontas para operar com IA de forma estruturada.",
+    nome: "Máquina de Vendas",
+    frase: "Sua empresa está entre as poucas com uma máquina de vendas previsível e escalável.",
   },
 } as const;
 
@@ -199,10 +186,10 @@ export function pontuacaoPilar(respostas: Respostas, pilar: PilarId): number {
   );
 }
 
-export function calcularNivel(alicerce: number, estrutura: number, acabamento: number): NivelCodigo {
-  if (alicerce < 6) return "V0";
-  if (estrutura < 6) return "V1";
-  if (acabamento < 6) return "V2";
+export function calcularNivel(fundacao: number, gestao: number, escala: number): NivelCodigo {
+  if (fundacao < 6) return "V0";
+  if (gestao < 6) return "V1";
+  if (escala < 6) return "V2";
   return "V3";
 }
 

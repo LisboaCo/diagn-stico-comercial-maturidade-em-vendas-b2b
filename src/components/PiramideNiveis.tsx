@@ -69,7 +69,7 @@ export function PiramideNiveis({ faixas }: { faixas: FaixaPiramide[] }) {
                 Nível {codigo}
               </div>
               <div
-                className="text-lg font-bold whitespace-nowrap"
+                className={`font-bold whitespace-nowrap ${i === 0 ? "text-[13px]" : "text-lg"}`}
                 style={{ letterSpacing: "-0.01em" }}
               >
                 {NIVEIS[codigo].nome}

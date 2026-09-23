@@ -25,15 +25,15 @@ export const Route = createFileRoute("/painel")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Painel do evento · Diagnóstico IA" },
+      { title: "Diagnóstico Comercial · Maturidade em Vendas B2B" },
       {
         name: "description",
-        content: "Painel agregado, ao vivo, das respostas do diagnóstico de maturidade em IA.",
+        content: "Painel agregado, ao vivo, das respostas do diagnóstico de maturidade comercial.",
       },
-      { property: "og:title", content: "Painel do evento · Diagnóstico IA" },
+      { property: "og:title", content: "Diagnóstico Comercial · Painel ao vivo" },
       {
         property: "og:description",
-        content: "Resultados agregados do diagnóstico de maturidade em IA em tempo real.",
+        content: "Resultados agregados do diagnóstico de maturidade comercial em tempo real.",
       },
       { name: "robots", content: "noindex" },
     ],
@@ -168,13 +168,13 @@ function Dashboard() {
         <div className="relative flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="micro-label" style={{ color: "var(--color-v4-red)" }}>
-              Diagnóstico IA · Painel ao vivo
+              Diagnóstico Comercial · Painel ao vivo
             </p>
             <h1
               className="mt-2 text-5xl font-bold text-ink"
               style={{ letterSpacing: "-0.02em" }}
             >
-              Maturidade em IA e Tecnologia
+              Maturidade Comercial
             </h1>
           </div>
           <div className="text-right">
@@ -201,7 +201,7 @@ function Dashboard() {
             Em qual nível está cada empresa
           </h2>
           <p className="mt-1 text-sm text-ink-muted">
-            Percentual da sala em cada fase da construção.
+            Percentual da sala em cada nível de maturidade comercial.
           </p>
           <PiramideNiveis faixas={porNivel} />
         </div>
@@ -213,15 +213,15 @@ function Dashboard() {
         </div>
 
         <div className="surface-card rounded-2xl p-6">
-          <h2 className="text-2xl font-bold tracking-tight text-ink">Como a sala usa IA hoje</h2>
-          <GraficoBarras dados={distribuicaoPergunta("p12")} altura={240} />
+          <h2 className="text-2xl font-bold tracking-tight text-ink">Onde a sala registra as vendas</h2>
+          <GraficoBarras dados={distribuicaoPergunta("p6")} altura={240} />
         </div>
 
         <div className="surface-card rounded-2xl p-6 xl:col-span-2">
           <h2 className="text-2xl font-bold tracking-tight text-ink">
-            Quem já tentou e não vingou
+            Quem tem meta por vendedor
           </h2>
-          <GraficoBarras dados={distribuicaoPergunta("p15")} altura={240} />
+          <GraficoBarras dados={distribuicaoPergunta("p7")} altura={240} />
         </div>
       </section>
 
@@ -276,12 +276,12 @@ function GraficoBarras({
           <YAxis
             type="category"
             dataKey="nome"
-            width={destaque ? 190 : 170}
+            width={destaque ? 240 : 220}
             tickLine={false}
             axisLine={false}
             tick={{
               fill: "var(--ink)",
-              fontSize: destaque ? 18 : 14,
+              fontSize: destaque ? 18 : 13,
               fontWeight: 600,
             }}
           />

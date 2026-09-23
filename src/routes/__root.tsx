@@ -77,11 +77,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Diagnóstico de Maturidade em IA e Tecnologia" },
+      { title: "Diagnóstico Comercial · Maturidade em Vendas B2B" },
       {
         name: "description",
         content:
-          "Diagnóstico rápido de maturidade em IA e tecnologia para donos de pequenas e médias empresas.",
+          "Diagnóstico rápido de maturidade comercial em vendas B2B para donos de pequenas e médias empresas.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
