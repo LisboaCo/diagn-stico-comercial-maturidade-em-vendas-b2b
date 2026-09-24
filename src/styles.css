@@ -147,3 +147,13 @@
   letter-spacing: -0.02em;
   color: var(--color-ink);
 }
+/* Oculta o badge "Made with Lovable" */
+#lovable-badge,
+a#lovable-badge,
+[id^="lovable-badge"],
+a[href*="lovable.dev"][target="_blank"][style*="position: fixed"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
