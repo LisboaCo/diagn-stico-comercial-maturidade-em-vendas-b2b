@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { ArrowLeft, Check, Share2 } from "lucide-react";
 
 import { HeroBackground, NumeralPilar } from "@/components/HeroBackground";
+import { RadarIndividual } from "@/components/RadarIndividual";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -274,6 +275,7 @@ function DiagnosticoPage() {
       <Resultado
         nivel={nivelSalvo ?? calcularNivel(pontos.fundacao, pontos.gestao, pontos.escala)}
         pontos={pontos}
+        respostas={respostas}
         passos={proximosPassos(respostas)}
       />
     );
@@ -471,10 +473,12 @@ function BarraPilar({ nome, valor }: { nome: string; valor: number }) {
 function Resultado({
   nivel,
   pontos,
+  respostas,
   passos,
 }: {
   nivel: NivelCodigo;
   pontos: { fundacao: number; gestao: number; escala: number };
+  respostas: Respostas;
   passos: string[];
 }) {
   const info = NIVEIS[nivel];
@@ -524,6 +528,15 @@ function Resultado({
         <BarraPilar nome="Fundação" valor={pontos.fundacao} />
         <BarraPilar nome="Gestão" valor={pontos.gestao} />
         <BarraPilar nome="Escala" valor={pontos.escala} />
+      </section>
+
+      <section className="surface-card mt-4 rounded-2xl p-5">
+        <h2 className="text-[15px] font-bold tracking-tight text-ink">
+          Sua maturidade comercial por frente
+        </h2>
+        <div className="mt-3">
+          <RadarIndividual respostas={respostas} />
+        </div>
       </section>
 
       <section className="surface-card mt-4 rounded-2xl p-5">
